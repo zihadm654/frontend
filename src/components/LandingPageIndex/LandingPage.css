@@ -1,0 +1,54 @@
+.landing-main-wrapper {
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+.login__container {
+  height: 105vh;
+}
+.row {
+  height: 100%;
+}
+.auth-img-left-sec {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: linear-gradient(310deg, rgb(33, 82, 255), rgb(33, 212, 253));
+  color: rgb(52, 71, 103);
+  border-radius: 0.75rem;
+}
+.auth-img-left-sec img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.content {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  left: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.content .text__content {
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  padding-top: 0;
+}
+.text__content h2 {
+  font-weight: 700;
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+}
+.text__content h5 {
+  font-size: 1.7rem;
+  line-height: 1.5;
+}
+.auth-img-left-sec .content img {
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+}

@@ -1,0 +1,37 @@
+.main-header {
+  height: 5.2rem;
+}
+.main-header .container {
+  height: 100%;
+}
+.main-header-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+.main-header-menu a img {
+  height: 50%;
+  object-fit: cover;
+}
+.header__right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.links a {
+  color: #000;
+  font-size: 2rem;
+}
+.links a:not(first-child) {
+  margin-left: 1.5rem;
+}
+.links button i {
+  margin-left: 2rem;
+  font-size: 2rem;
+}
