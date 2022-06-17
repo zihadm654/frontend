@@ -352,7 +352,7 @@ const LandingPageIndex = (props) => {
                       <span>or</span>
                     </span>
                   ) : (
-                    <span classsName="login-or-hide"></span>
+                    <span className="login-or-hide"></span>
                   )}
                   <div id="main">
                     <div id="first">

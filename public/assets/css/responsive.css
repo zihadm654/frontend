@@ -82,9 +82,9 @@ Version: 1.0
   .follower-profile-header {
     margin-top: -45px;
   }
-  .search-dropdown-sec {
+  /* .search-dropdown-sec {
     right: 30% !important;
-  }
+  } */
   .user-right-content-sec {
     grid-template-columns: 445px auto !important;
   }

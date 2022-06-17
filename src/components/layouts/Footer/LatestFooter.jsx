@@ -29,7 +29,7 @@ const LatestFooter = (props) => {
 
   return (
     <>
-      <div className="latest-footer-sec">
+      <div className="latest-footer-sec landing-footer-sec">
         {/* <Container>
           <Row>
             <Col md={8}>
@@ -96,29 +96,25 @@ const LatestFooter = (props) => {
               : ""}
             <div className="footer-content pt-5 pb-5">
               <Row>
-                <Col xl={5} lg={5} md={6} sm={6} xs={6} className="mb-30">
-                  <div className="footer-widget">
+                <Col xl={4} lg={3} md={5} sm={5} xs={6} className="mb-30 footer-center">
+                  <div className="footer-widget logo-container">
                     <div className="footer-logo">
                       <Link to="#">
                         <Image
                           className="footer-logo"
-                          src={configuration.get("configData.site_logo")}
+                          // src={configuration.get("configData.site_logo")}
+                          src="/assets/images/logo/Logo PNG.png"
                         />
                       </Link>
                     </div>
-                    <div className="footer-text">
-                      <p>{configuration.get("configData.tag_name")}</p>
-                    </div>
-                    {/* <div className="footer-social-icon">
-                      <span>Follow us</span>
-                    </div> */}
                   </div>
                 </Col>
-                <Col xl={2} lg={2} md={6} sm={6} xs={6} className="mb-30">
+                <Col xl={4} lg={3} md={5} sm={5} xs={5} className="mb-30 footer-left">
                   <div className="footer-widget">
-                    <div className="footer-widget-heading">
+                    {/* <div className="footer-widget-heading">
                       <h3>{configuration.get("configData.site_name")}</h3>
-                    </div>
+                      <h3>Factzz</h3>
+                    </div> */}
                     <ul className="list-unstyled">
                       {configuration
                         .get("configData.footer_pages1")
@@ -135,149 +131,137 @@ const LatestFooter = (props) => {
                             </Link>
                           </Media>
                         ))}
+                      {configuration
+                        .get("configData.footer_pages2")
+                        .map((static_page, index) => (
+                          <Media
+                            as="li"
+                            key={"sp-" + static_page.static_page_unique_id}
+                          >
+                            <Link
+                              to={`/page/${static_page.static_page_unique_id}`}
+                              key={static_page.static_page_unique_id}
+                            >
+                              {static_page.title}
+                            </Link>
+                          </Media>
+                        ))}
                     </ul>
                   </div>
                 </Col>
-                <Col xl={2} lg={2} md={6} sm={6} xs={6} className="mb-50">
+                <Col xl={4} lg={4} md={6} sm={6} xs={6} className="footer-right">
                   <div className="footer-widget">
-                    <div className="footer-widget">
-                      <div className="footer-widget-heading">
-                        <h3>{t("discover")}</h3>
-                      </div>
-                      <ul className="list-unstyled">
-                        {configuration
-                          .get("configData.footer_pages2")
-                          .map((static_page, index) => (
-                            <Media
-                              as="li"
-                              key={"sp-" + static_page.static_page_unique_id}
-                            >
-                              <Link
-                                to={`/page/${static_page.static_page_unique_id}`}
-                                key={static_page.static_page_unique_id}
-                              >
-                                {static_page.title}
-                              </Link>
-                            </Media>
-                          ))}
-                      </ul>
-                    </div>
-                  </div>
-                </Col>
-                <Col xl={3} lg={3} md={6} sm={6} xs={6}>
-                  <div className="footer-widget">
-                    <div className="footer-widget-heading">
-                      <h3>{t("follow_us")}</h3>
-                    </div>
-
                     <div className="footer-social-icon">
-                      <ul className="footer-social-link-sec list-unstyled">
-                        {configuration.get("configData.facebook_link") ?  
-                        <Media as="li">
-                          <a
-                            href={configuration.get("configData.facebook_link")}
-                            target="_blank"
-                          >
-                            <i className="fab fa-facebook-f"></i>
-                          </a>
-                        </Media>
-                        : "" }
-                        {configuration.get("configData.twitter_link") ?
-                        <Media as="li">
-                          <a
-                            href={configuration.get("configData.twitter_link")}
-                            target="_blank"
-                          >
-                            <i className="fab fa-twitter"></i>
-                          </a>                          
-                        </Media>
-                        : "" }
-                        {configuration.get("configData.instagram_link") ?
-                        <Media as="li">
-                          <a
-                            href={configuration.get("configData.instagram_link")}
-                            target="_blank"
-                          >
-                            <i className="fab fa-instagram"></i>
-                          </a>    
-                        </Media>
-                        : "" }
-                        {configuration.get("configData.linkedin_link") ?
+                      <ul className="footer-social-link-sec list-unstyled social-media">
+                        <div className="icons-container">
 
-                        <Media as="li">
-                          <a
-                            href={configuration.get("configData.linkedin_link")}
-                            target="_blank"
-                          >
-                            <i className="fab fa-linkedin-in"></i>
-                          </a>
-                        </Media>
-                        : "" }
-                        {configuration.get("configData.pinterest_link") ?
+                          {configuration.get("configData.facebook_link") ?
+                            <Media as="li">
+                              <a
+                                href={configuration.get("configData.facebook_link")}
+                                target="_blank"
+                              >
+                                <i className="fab fa-facebook-f"></i>
+                              </a>
+                            </Media>
+                            : ""}
+                          {configuration.get("configData.twitter_link") ?
+                            <Media as="li">
+                              <a
+                                href={configuration.get("configData.twitter_link")}
+                                target="_blank"
+                              >
+                                <i className="fab fa-twitter"></i>
+                              </a>
+                            </Media>
+                            : ""}
+                          {configuration.get("configData.instagram_link") ?
+                            <Media as="li">
+                              <a
+                                href={configuration.get("configData.instagram_link")}
+                                target="_blank"
+                              >
+                                <i className="fab fa-instagram"></i>
+                              </a>
+                            </Media>
+                            : ""}
+                          {configuration.get("configData.linkedin_link") ?
 
-                        <Media as="li">
-                          <a
-                            href={configuration.get("configData.pinterest_link")}
-                            target="_blank"
-                          >
-                            <i className="fab fa-pinterest"></i>
-                          </a>                          
-                        </Media>
-                        : "" }
-                        {configuration.get("configData.youtube_link") ?
+                            <Media as="li">
+                              <a
+                                href={configuration.get("configData.linkedin_link")}
+                                target="_blank"
+                              >
+                                <i className="fab fa-linkedin-in"></i>
+                              </a>
+                            </Media>
+                            : ""}
+                          {configuration.get("configData.pinterest_link") ?
 
-                        <Media as="li">
-                          <a
-                            href={configuration.get("configData.youtube_link")}
-                            target="_blank"
-                          >
-                            <i className="fab fa-youtube"></i>
-                          </a>   
-                        </Media>
-                        : "" }
-                        {configuration.get("configData.snapchat_link") ?
+                            <Media as="li">
+                              <a
+                                href={configuration.get("configData.pinterest_link")}
+                                target="_blank"
+                              >
+                                <i className="fab fa-pinterest"></i>
+                              </a>
+                            </Media>
+                            : ""}
+                          {configuration.get("configData.youtube_link") ?
 
-                        <Media as="li">
-                          <a
-                            href={configuration.get("configData.snapchat_link")}
-                            target="_blank"
-                          >
-                            <i className="fab fa-snapchat"></i>
-                          </a>                         
-                        </Media>
-                        : "" }
+                            <Media as="li">
+                              <a
+                                href={configuration.get("configData.youtube_link")}
+                                target="_blank"
+                              >
+                                <i className="fab fa-youtube"></i>
+                              </a>
+                            </Media>
+                            : ""}
+                          {configuration.get("configData.snapchat_link") ?
+
+                            <Media as="li">
+                              <a
+                                href={configuration.get("configData.snapchat_link")}
+                                target="_blank"
+                              >
+                                <i className="fab fa-snapchat"></i>
+                              </a>
+                            </Media>
+                            : ""}
+                        </div>
+                        {configuration.get("configData.is_multilanguage_enabled") == 1 ? (
+
+                          <div className="select-lang-drop-down">
+                            <select className="form-control mw-200"
+                              name="lang"
+                              onChange={handleChangeLang}
+                              defaultValue={localStorage.getItem("lang")}
+                            >
+                              <option
+                                value="en"
+                              // selected={
+                              //     localStorage.getItem("lang") == "en" ? true : false
+                              // }
+                              >
+                                {t("english")}
+                              </option>
+                              <option
+                                value="es"
+                              // selected={
+                              //     localStorage.getItem("lang") == "es" ? true : false
+                              // }
+                              >
+                                {t("spanish")}
+                              </option>
+                            </select>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </ul>
                     </div>
                   </div>
-                  {configuration.get("configData.is_multilanguage_enabled") == 1 ? (
-
-                    <div className="select-lang-drop-down">
-                      <select className="form-control mw-200 mb-3" 
-                        name="lang"
-                        onChange={handleChangeLang}
-                        defaultValue={localStorage.getItem("lang")}
-                        >
-                        <option
-                          value="en"
-                          // selected={
-                          //     localStorage.getItem("lang") == "en" ? true : false
-                          // }
-                        >
-                          {t("english")}
-                        </option>
-                        <option
-                          value="es"
-                          // selected={
-                          //     localStorage.getItem("lang") == "es" ? true : false
-                          // }
-                        >
-                          {t("spanish")}
-                        </option>
-                      </select>
-                    </div>
-                  ) : (
-                    ""
-                  )}
                 </Col>
               </Row>
             </div>

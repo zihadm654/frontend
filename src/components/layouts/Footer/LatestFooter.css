@@ -41,8 +41,10 @@
   background-size: cover;
   background-position: 100% 100%;
 }
-.footer-logo {
-  margin-bottom: 10px;
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .footer-logo img {
   max-width: 200px;
@@ -74,14 +76,19 @@
 
 .footer-social-icon li {
   margin-right: 1em;
-  width: 2em;
-  height: 2em;
-  background-color: var(--primary-color);
+  width: 2.5em;
+  height: 2.4em;
+  /* background-color: var(--primary-color); */
+  background-image: linear-gradient(
+    310deg,
+    rgb(33, 82, 255),
+    rgb(33, 212, 253)
+  );
   color: var(--secondary-color);
   border-radius: 50%;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .footer-social-icon li:last-child {
@@ -112,25 +119,33 @@
   width: 50px;
   background: var(--primary-color);
 }
-.footer-widget ul li {
-  /* display: inline-block;
-    float: left;
-    width: 50%;
-    margin-bottom: 12px;
-    margin-top: 0; */
+.footer-widget ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+.footer-social-icon .social-media {
+  justify-content: space-between;
+}
+.footer-social-icon .social-media .icons-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .footer-widget ul li a:hover {
   color: var(--primary-color);
 }
 .footer-widget ul li a {
   text-transform: capitalize;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--quaternary-color);
+  /* margin-left: 1.3rem; */
 }
 .copyright-area {
   background: #202020;
-  padding: 20px 0;
+  padding: 1rem 0;
 }
 .copyright-text p {
   margin: 0;
@@ -156,7 +171,7 @@
 
 .footer-widget ul li {
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: 0;
 }
 
 .footer-aligin-last {
@@ -167,4 +182,23 @@
 .footer-aligin-center {
   display: flex;
   justify-content: center;
+}
+.footer-widget .footer-logo {
+  height: 2.5rem;
+}
+.footer-widget .footer-logo a img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.footer-left,
+.footer-center,
+.footer-right {
+  align-self: center;
+}
+.media {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 1.4rem;
 }

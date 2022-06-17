@@ -117,7 +117,8 @@ const ProfileIndex = (props) => {
                             <div className="profile-logo-sec">
                                 <Image
                                     className="profile-logo-img"
-                                    src={configuration.get("configData.site_logo")}
+                                    // src={configuration.get("configData.site_logo")}
+                                    src="/assets/images/logo/Logo PNG.png"
                                     width="136" height="28"
                                 />
                             </div>
@@ -163,7 +164,7 @@ const ProfileIndex = (props) => {
                                         }
                                     </div>
                                 }
-                                <h4>{props.profile.data.name}
+                                <h4>Factzz
                                     <span>
                                         {props.profile.data.is_verified_badge == 1 &&
                                             <Image

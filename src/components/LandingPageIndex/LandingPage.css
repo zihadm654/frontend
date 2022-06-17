@@ -21,6 +21,9 @@
   width: 100%;
   object-fit: cover;
 }
+.form-group input {
+  background-color: rgb(248, 249, 250);
+}
 .content {
   position: absolute;
   height: 100%;

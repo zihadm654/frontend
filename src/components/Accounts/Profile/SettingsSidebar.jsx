@@ -252,7 +252,7 @@ const SettingsSidebar = (props) => {
                                         onChange={handleChangeImage} />
                                 </div>
                             </div>
-                            <h4>{profile.data.name}
+                            <h4>Factzz
                                 <span>
                                     {props.profile.data.is_verified_badge == 1 &&
                                         <Image
