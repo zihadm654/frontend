@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
 import SideNav from "../SideNav/index";
 import { Notify } from "react-redux-notify";
-import LatestFooter from "./Footer/LatestFooter";
-import { connect } from "react-redux";
+// import LatestFooter from "./Footer/LatestFooter";
 import { fetchUserDetailsStart } from "../../store/actions/UserAction";
 import { useHistory } from 'react-router-dom';
+import { connect } from "react-redux";
+import LatestFooter from "./Footer/LatestFooter";
 import HeaderIndex from "./Header/HeaderIndex";
 
 const MainLayout = (props) => {
-  let history = useHistory();
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('userLoginStatus'))
-
   const [themeState, setThemeState] = useState(false);
-
-  const toggleClass = () => {
-    setThemeState(!themeState);
-  };
+  let history = useHistory();
+  // const [isLoggedIn, setIsLoggedIn] = React.useState(localStorage.getItem('userLoginStatus'))
 
   useEffect(() => {
     props.dispatch(fetchUserDetailsStart());
@@ -26,31 +22,30 @@ const MainLayout = (props) => {
       history.push('/register/verify');
     }
   }, [props.profile]);
-  useEffect(() => {
-    if (localStorage.getItem('userLoginStatus') === "true") {
-      setIsLoggedIn(true)
-    }
-    else {
-      setIsLoggedIn(false)
-    }
-  }, [])
+
+  const toggleClass = () => {
+    setThemeState(!themeState);
+  };
+
+
+  // useEffect(() => {
+  //   if (localStorage.getItem('userLoginStatus') === "true") {
+  //     setIsLoggedIn(true)
+  //   }
+  //   else {
+  //     setIsLoggedIn(false)
+  //   }
+  // }, [])
+
   // const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-  console.log(isLoggedIn)
   return (
     <div className={`${themeState ? "dark-mode" : ""}`} >
       <div className="app-admin-wrap layout-sidebar-large">
         <Notify position="TopRight" />
-        <HeaderIndex toggleTheme={toggleClass} />
-        {/* <SideNav /> */}
+        {localStorage.getItem('is_content_creator') === 2 ?
+          <HeaderIndex toggleTheme={toggleClass} /> :
+          <SideNav />
+        }
         <div className="main-content-wrap sidenav-open d-flex flex-column">
           <div className="main-wrap-sec">
             {React.cloneElement(props.children)}

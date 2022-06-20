@@ -197,6 +197,9 @@ const HeaderIndex = (props) => {
                   )}
                 </div>
                 <div className="links">
+                  <Button variant="outline-primary" onClick={props.handleDrawerOpen}>
+                    <i className="fas fa-bars"></i>
+                  </Button>
                   <Button
                     type="button"
                     className="main-header-menu icon-with-round-hover"
@@ -230,7 +233,7 @@ const HeaderIndex = (props) => {
                       "/assets/images/logo/Logo PNG.png"
                     }
                   /> */}
-                    <i class="fas fa-gear"></i>
+                    <i className="fas fa-gear"></i>
                     {/* <i class="fas fa-home"></i> */}
                   </Link>
                   {/* <Link
