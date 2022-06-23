@@ -115,7 +115,6 @@ const HeaderIndex = (props) => {
   const { pathname } = useLocation()
   // const slas = pathname.split('')
   const char = pathname.split(' ')
-  console.log();
   return (
     <>
       {localStorage.getItem("userId") ? (
@@ -214,53 +213,14 @@ const HeaderIndex = (props) => {
                 /> */}
                     <i className='fas fa-user'></i>
                     <p>Sign In</p>
-                    {/* <Image
-                    src={
-                      window.location.origin +
-                      "/assets/images/icons/new/user-new.svg"
-                    }
-                  /> */}
                   </Button>
-                  {/* <Button onClick={props.handleDrawerClose}>Menu</Button> */}
                   <Link
                     to={"/edit-profile"}
                     className="main-header-menu icon-with-round-hover m-current"
                     onClick={() => setIsVisible(false)}
                   >
-                    {/* <Image
-                    src={
-                      window.location.origin +
-                      "/assets/images/logo/Logo PNG.png"
-                    }
-                  /> */}
                     <i className="fas fa-gear"></i>
-                    {/* <i class="fas fa-home"></i> */}
                   </Link>
-                  {/* <Link
-                    to={"/inbox"}
-                    className="main-header-menu icon-with-round-hover"
-                    onClick={() => setIsVisible(false)}
-                  > */}
-                  {/* <Image
-                  src={window.location.origin + "/assets/images/icons/chat.svg"}
-                /> */}
-                  {/* <i className='fas fa-envolpe'></i> */}
-                  {/* <Image
-                    src={
-                      window.location.origin +
-                      "/assets/images/icons/new/mail-new.svg"
-                    }
-                  /> */}
-                  {/* <span className="main-header-menu__count"> 5 </span>  */}
-                  {/* {chatCount > 0 ? (
-                      <Badge variant="light" className="badge-notify">
-                        {chatCount}
-                      </Badge>
-                    ) : (
-                      ""
-                    )}
-                  </Link> */}
-
                   <Link
                     to={"/notification"}
                     className="main-header-menu icon-with-round-hover"
@@ -268,19 +228,7 @@ const HeaderIndex = (props) => {
                     exact-active-classname=""
                     onClick={() => setIsVisible(false)}
                   >
-                    {/* <Image
-                    src={
-                      window.location.origin +
-                      "/assets/images/icons/notification.svg"
-                    }
-                  /> */}
                     <i className='fas fa-bell'></i>
-                    {/* <Image
-                    src={
-                      window.location.origin +
-                      "/assets/images/icons/new/bell-new.svg"
-                    }
-                  /> */}
                     {bellCount > 0 ? (
                       <Badge variant="light" className="badge-notify">
                         {bellCount}
@@ -292,14 +240,6 @@ const HeaderIndex = (props) => {
                 </div>
               </div>
             </nav>
-
-            {/* {localStorage.getItem("is_document_verified") == 3 ? (
-                  <div className="pl-2">
-                    <Alert key={1} variant='danger'>
-                      The user updated documents decined by Admin.
-                    </Alert>
-                  </div>
-                ) : null} */}
           </Container>
         </header>
       ) : (
@@ -412,24 +352,7 @@ const HeaderIndex = (props) => {
                     </Media>
                   </ul>
                 </div>
-
-                {/* <div className="pull-right">
-                  <span className="m-arrow">
-                    <Image
-                      src={
-                        window.location.origin +
-                        "/assets/images/icons/arrow-down.svg"
-                      }
-                      alt={configuration.get("configData.site_name")}
-                    />
-                  </span>
-                </div> */}
               </div>
-              {/* <Button
-                className="drawer__close"
-                data-drawer-close
-                aria-label="Close Drawer"
-              ></Button> */}
             </div>
             <div className="drawer__content">
               <div className="right-sidebar-menu-item">
@@ -679,9 +602,7 @@ const HeaderIndex = (props) => {
                   {t("wallet")}{" "}
                   <span className="desc">({t("your_earnings")})</span>
                 </Link>
-
                 <hr className="sidebar-menu-divider" />
-
                 <Link
                   to={`/page/help`}
                   className="sidebar-menus-item"

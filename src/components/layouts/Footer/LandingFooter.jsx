@@ -30,17 +30,6 @@ const LandingFooter = (props) => {
   return (
     <>
       <div className="latest-footer-sec landing-footer-sec">
-        {/* <Container>
-          <Row>
-            <Col md={8}>
-              <div className="demo-footer-sec">
-                <h5>No Credit Card Rquired</h5>
-                <h3>Get a Demo of FansForX today!</h3>
-                <Form></Form>
-              </div>
-            </Col>
-          </Row>
-        </Container> */}
         <footer className="footer-section latest-footer-box">
           <Container>
             {configuration.get("configData.contact_address") || configuration.get("configData.contact_email") || configuration.get("configData.contact_mobile") ?
@@ -213,6 +202,7 @@ const LandingFooter = (props) => {
                               <a
                                 href={configuration.get("configData.youtube_link")}
                                 target="_blank"
+                                rel="noopener noreferrer"
                               >
                                 <i className="fab fa-youtube"></i>
                               </a>
@@ -224,6 +214,7 @@ const LandingFooter = (props) => {
                               <a
                                 href={configuration.get("configData.snapchat_link")}
                                 target="_blank"
+                                rel="noopener noreferrer"
                               >
                                 <i className="fab fa-snapchat"></i>
                               </a>

@@ -122,7 +122,7 @@
 .footer-widget ul {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   margin-bottom: 0;
 }
 .footer-social-icon .social-media {
@@ -201,4 +201,17 @@
   align-items: center !important;
   justify-content: center !important;
   margin-right: 1.4rem;
+}
+.footer-content p {
+  font-size: 1.6rem;
+}
+.footer-content p span {
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: var(--quaternary-color);
+}
+@media (min-width: 576px) {
+  .social-links {
+    justify-content: start;
+  }
 }
