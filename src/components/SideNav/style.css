@@ -8,11 +8,12 @@
   margin-left: 50px;
 }
 .sidebar {
-  background: rgb(255, 255, 255);
+  background: rgb(248, 249, 250);
   color: gray;
   height: 100vh;
-  width: 100vh;
+  width: 100vw;
   transition: all 0.5s;
+  overflow-y: auto;
 }
 .top_section {
   display: flex;
@@ -26,6 +27,7 @@
   margin-left: 50px;
 }
 .link {
+  align-items: center;
   display: flex;
   color: gray;
   padding: 10px 15px;
@@ -45,4 +47,5 @@
 
 .icon {
   font-size: 22px;
+  background: #fff;
 }

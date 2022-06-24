@@ -11,11 +11,6 @@ const SideNav = () => {
    const toggle = () => setIsOpen(!isOpen);
    const menuItem = [
       {
-         path: "/home",
-         name: "Home",
-         icon: <i class="fas fa-home"></i>
-      },
-      {
          path: "/explore",
          name: "Explore",
          icon: <i class="fa-regular fa-compass"></i>
@@ -29,11 +24,6 @@ const SideNav = () => {
          path: "/edit-profile",
          name: "Settings",
          icon: <i class="fa-solid fa-gears"></i>
-      },
-      {
-         path: "/dashboard",
-         name: "Dashboard",
-         icon: <i class="fa-solid fa-gauge"></i>
       },
       {
          path: "/stories",
@@ -50,27 +40,41 @@ const SideNav = () => {
          name: "List",
          icon: <i class="fa-solid fa-list-check"></i>
       },
+      {
+         path: "/list",
+         name: "List",
+         icon: <i class="fa-solid fa-list-check"></i>
+      },
+      {
+         path: "/list",
+         name: "List",
+         icon: <i class="fa-solid fa-list-check"></i>
+      },
+      {
+         path: "/list",
+         name: "List",
+         icon: <i class="fa-solid fa-list-check"></i>
+      },
 
    ]
    return (
       <div className="contain">
          <div
-            style={{ width: isOpen ? "200px" : "50px" }}
+            style={{ width: isOpen ? "220px" : "60px" }}
             className="sidebar">
             <div className="top_section">
                <Image
-                  style={{ width: '50px', height: '50px' }}
-                  src={isOpen ? "/assets/images/logo/App logo-01.png" : "/assets/images/logo/Logo PNG.png"}
+                  style={{ height: '30px', width: "100%" }}
+                  src={!isOpen ? "/assets/images/logo/App logo-01.png" : "/assets/images/logo/Logo PNG.png"}
                />
-               <div style={{ marginLeft: isOpen ? "50px" : "0px", cursor: 'pointer' }} className="bars">
-                  <i class="fa-solid fa-bars-staggered" onClick={toggle}> </i>
+               <div style={{ marginLeft: isOpen ? "30px" : "0px", cursor: 'pointer' }} className="bars">
+                  <i class="fas fa-bars-staggered" onClick={toggle}> </i>
                </div>
             </div>
             <hr />
             {
                menuItem.map((item, index) => (
-                  <NavLink to={item.path} key={index} className="link" activeclassName="acti
-                  ve">
+                  <NavLink to={item.path} key={index} className="link" activeclassName="active">
                      <div className="icon">{item.icon}</div>
                      <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
                   </NavLink>

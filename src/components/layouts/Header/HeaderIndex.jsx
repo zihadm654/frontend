@@ -25,6 +25,19 @@ const HeaderIndex = (props) => {
   const [loginModal, setLoginModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [show, toggleShow] = useState(false);
+  const [sticky, setSticky] = useState(false)
+
+  const stickyNav = () => {
+    if (window.scrollY >= 70) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', stickyNav);
+  }, []);
+
   const handleSearch = (event) => {
     if (event.currentTarget.value === "") {
       toggleShow(false);
@@ -118,171 +131,167 @@ const HeaderIndex = (props) => {
   return (
     <>
       {localStorage.getItem("userId") ? (
-        <header className="main-header">
-          <Container>
-            <nav className="main-header-menu">
-              <Link
-                to={"/home"}
-                className="main-header-menu icon-with-round-hover m-current"
-                onClick={() => setIsVisible(false)}
-              >
-                {/* <Image
+        <header className={!sticky ? "main-header" : "main-header active"}>
+          <nav className={!sticky ? "main-header-menu" : "main-header-menu active"}>
+            <Link
+              to={"/home"}
+              className="main-header-menu icon-with-round-hover m-current"
+              onClick={() => setIsVisible(false)}
+            >
+              {/* <Image
                   src={
                     window.location.origin +
                     "/assets/images/logo/Logo PNG.png"
                   }
                 /> */}
-                <div className="path">
-                  <i class="fas fa-home"></i>
-                  {/* <p>{slas[0]}</p> */}
-                  <p>{char[0]}</p>
-                </div>
-              </Link>
-              <div className="header__right">
-                <div className="search-row">
-                  {/* <Link to="#" className="search-button">
+              <div className="path">
+                <i class="fas fa-home"></i>
+                {/* <p>{slas[0]}</p> */}
+                <p>{char[0]}</p>
+              </div>
+            </Link>
+            <div className="header__right">
+              <div className="search-row">
+                {/* <Link to="#" className="search-button">
                   {t("home")}
                 </Link> */}
-                  <div className="search-container">
-                    <Form className="search-box">
-                      <input
-                        className="search-text"
-                        type="text"
-                        placeholder="Search User"
-                        onChange={handleSearch}
-                      />
-                      <Link to="#" className="search-btn">
-                        <i className="fas fa-search"></i>
-                      </Link>
-                    </Form>
-                  </div>
-                  {show && (
-                    <div className="search-dropdown-sec">
-                      <ul className="list-unstyled search-dropdown-list-sec">
-                        {props.searchUser.loading
-                          ? <CommonCenterLoader />
-                          : props.searchUser.data.users.length > 0
-                            ? props.searchUser.data.users.map((user) => (
-                              <Media as="li" key={user.user_unique_id}>
-                                <Link to={`/${user.user_unique_id}`}>
-                                  <div className="search-body">
-                                    <div className="user-img-sec">
-                                      <Image
-                                        alt="#"
-                                        src={user.picture}
-                                        className="user-img"
-                                      />
-                                    </div>
-                                    <div className="search-content">
-                                      <h5>
-                                        {user.name}{" "}
-                                        {user.is_verified_badge == 1 ? (
-                                          <div className="pl-2">
-                                            <VerifiedBadgeNoShadow />
-                                          </div>
-                                        ) : null}
-                                      </h5>
-                                      <p className="text-muted f-12">
-                                        @{user.username}
-                                      </p>
-                                    </div>
-                                  </div>
-                                </Link>
-                              </Media>
-                            ))
-                            : t("no_user_found")}
-                      </ul>
-                    </div>
-                  )}
+                <div className="search-container">
+                  <Form className="search-box">
+                    <input
+                      className="search-text"
+                      type="text"
+                      placeholder="Search User"
+                      onChange={handleSearch}
+                    />
+                    <Link to="#" className="search-btn">
+                      <i className="fas fa-search"></i>
+                    </Link>
+                  </Form>
                 </div>
-                <div className="links">
-                  <Button variant="outline-primary" onClick={props.handleDrawerOpen}>
-                    <i className="fas fa-bars"></i>
-                  </Button>
-                  <Button
-                    type="button"
-                    className="main-header-menu icon-with-round-hover"
-                    to="#"
-                    data-drawer-trigger
-                    aria-controls="drawer-name"
-                    aria-expanded="false"
-                    onClick={() => setIsVisible(!isVisible)}
-                  >
-                    {/* <Image
+                {show && (
+                  <div className="search-dropdown-sec">
+                    <ul className="list-unstyled search-dropdown-list-sec">
+                      {props.searchUser.loading
+                        ? <CommonCenterLoader />
+                        : props.searchUser.data.users.length > 0
+                          ? props.searchUser.data.users.map((user) => (
+                            <Media as="li" key={user.user_unique_id}>
+                              <Link to={`/${user.user_unique_id}`}>
+                                <div className="search-body">
+                                  <div className="user-img-sec">
+                                    <Image
+                                      alt="#"
+                                      src={user.picture}
+                                      className="user-img"
+                                    />
+                                  </div>
+                                  <div className="search-content">
+                                    <h5>
+                                      {user.name}{" "}
+                                      {user.is_verified_badge == 1 ? (
+                                        <div className="pl-2">
+                                          <VerifiedBadgeNoShadow />
+                                        </div>
+                                      ) : null}
+                                    </h5>
+                                    <p className="text-muted f-12">
+                                      @{user.username}
+                                    </p>
+                                  </div>
+                                </div>
+                              </Link>
+                            </Media>
+                          ))
+                          : t("no_user_found")}
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div className="links">
+                <Button variant="outline-primary" onClick={props.handleDrawerOpen}>
+                  <i className="fas fa-bars"></i>
+                </Button>
+                <Button
+                  type="button"
+                  className="main-header-menu icon-with-round-hover"
+                  to="#"
+                  data-drawer-trigger
+                  aria-controls="drawer-name"
+                  aria-expanded="false"
+                  onClick={() => setIsVisible(!isVisible)}
+                >
+                  {/* <Image
                   src={window.location.origin + "/assets/images/icons/user.svg"}
                 /> */}
-                    <i className='fas fa-user'></i>
-                    <p>Sign In</p>
-                  </Button>
-                  <Link
-                    to={"/edit-profile"}
-                    className="main-header-menu icon-with-round-hover m-current"
-                    onClick={() => setIsVisible(false)}
-                  >
-                    <i className="fas fa-gear"></i>
-                  </Link>
-                  <Link
-                    to={"/notification"}
-                    className="main-header-menu icon-with-round-hover"
-                    active-classname="m-current"
-                    exact-active-classname=""
-                    onClick={() => setIsVisible(false)}
-                  >
-                    <i className='fas fa-bell'></i>
-                    {bellCount > 0 ? (
-                      <Badge variant="light" className="badge-notify">
-                        {bellCount}
-                      </Badge>
-                    ) : (
-                      ""
-                    )}
-                  </Link>
-                </div>
+                  <i className='fas fa-user'></i>
+                  <p>Sign In</p>
+                </Button>
+                <Link
+                  to={"/edit-profile"}
+                  className="main-header-menu icon-with-round-hover m-current"
+                  onClick={() => setIsVisible(false)}
+                >
+                  <i className="fas fa-gear"></i>
+                </Link>
+                <Link
+                  to={"/notification"}
+                  className="main-header-menu icon-with-round-hover"
+                  active-classname="m-current"
+                  exact-active-classname=""
+                  onClick={() => setIsVisible(false)}
+                >
+                  <i className='fas fa-bell'></i>
+                  {bellCount > 0 ? (
+                    <Badge variant="light" className="badge-notify">
+                      {bellCount}
+                    </Badge>
+                  ) : (
+                    ""
+                  )}
+                </Link>
               </div>
-            </nav>
-          </Container>
+            </div>
+          </nav>
         </header>
       ) : (
         <header className="main-header">
-          <Container>
-            <nav className="main-header-menu">
-              <Link
-                to={"/"}
-                className="main-header-menu icon-with-round-hover m-current"
-                onClick={() => setIsVisible(false)}
-              >
-                <Image
-                  src={window.location.origin + "/assets/images/icons/home.svg"}
-                />
-              </Link>
-              <ul className="list-unstyled single-profile-menu">
-                <Media as="li">
-                  <Link
-                    to="#"
-                    className="nav-link"
-                    onClick={() => {
-                      setSignupModal(false);
-                      setLoginModal(true);
-                    }}
-                  >
-                    Login
-                  </Link>
-                </Media>
-                <Media as="li">
-                  <Link
-                    to="#"
-                    className="nav-link"
-                    onClick={() => {
-                      setSignupModal(true);
-                      setLoginModal(false);
-                    }}
-                  >
-                    Signup
-                  </Link>
-                </Media>
-              </ul>
-            </nav>
-          </Container>
+          <nav className="main-header-menu">
+            <Link
+              to={"/"}
+              className="main-header-menu icon-with-round-hover m-current"
+              onClick={() => setIsVisible(false)}
+            >
+              <Image
+                src={window.location.origin + "/assets/images/icons/home.svg"}
+              />
+            </Link>
+            <ul className="list-unstyled single-profile-menu">
+              <Media as="li">
+                <Link
+                  to="#"
+                  className="nav-link"
+                  onClick={() => {
+                    setSignupModal(false);
+                    setLoginModal(true);
+                  }}
+                >
+                  Login
+                </Link>
+              </Media>
+              <Media as="li">
+                <Link
+                  to="#"
+                  className="nav-link"
+                  onClick={() => {
+                    setSignupModal(true);
+                    setLoginModal(false);
+                  }}
+                >
+                  Signup
+                </Link>
+              </Media>
+            </ul>
+          </nav>
         </header>
       )}
       {isVisible && localStorage.getItem("userId") ? (
@@ -325,7 +334,6 @@ const HeaderIndex = (props) => {
                       @{localStorage.getItem("username")}
                     </span>
                   </Link>
-
                   <ul className="list-inline">
                     <Media as="li">
                       <Link to={"/fans"} onClick={() => setIsVisible(false)}>
