@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Container, Image, Media, Button, Badge, Form } from "react-bootstrap";
+import { Image, Media, Button, Badge, Form } from "react-bootstrap";
 import configuration from "react-global-configuration";
 import VerifiedBadgeNoShadow from "../../Handlers/VerifiedBadgeNoShadow";
-// import SideBarIndex from "../SideBar/SideBarIndex";
 import io from "socket.io-client";
-// import { updateNotificationCount } from "../../../store/actions/NotificationAction";
-// import Alert from "react-bootstrap/Alert";
 import { connect } from "react-redux";
 import { translate, t } from "react-multi-lang";
 import CreateContentCreatorModal from "../../helper/CreateContentCreatorModal";
@@ -46,6 +43,7 @@ const HeaderIndex = (props) => {
       props.dispatch(searchUserStart({ key: event.currentTarget.value }));
     }
   };
+
   useEffect(() => {
     console.log("Inside");
     let chatSocketUrl = configuration.get("configData.chat_socket_url");
@@ -131,25 +129,23 @@ const HeaderIndex = (props) => {
   return (
     <>
       {localStorage.getItem("userId") ? (
-        <header className={!sticky ? "main-header" : "main-header active"}>
+        <header style={{ width: props.isContentCreator ? "75%" : "100%" }} className={!sticky ? "main-header" : "main-header active"}>
           <nav className={!sticky ? "main-header-menu" : "main-header-menu active"}>
-            <Link
-              to={"/home"}
-              className="main-header-menu icon-with-round-hover m-current"
-              onClick={() => setIsVisible(false)}
-            >
-              {/* <Image
-                  src={
-                    window.location.origin +
-                    "/assets/images/logo/Logo PNG.png"
-                  }
-                /> */}
-              <div className="path">
-                <i class="fas fa-home"></i>
-                {/* <p>{slas[0]}</p> */}
-                <p>{char[0]}</p>
-              </div>
-            </Link>
+            <div className="header__left">
+              <Link
+                to={"/home"}
+                className="main-header-menu icon-with-round-hover m-current"
+                onClick={() => setIsVisible(false)}
+              >
+                <div className="path">
+                  <i class="fas fa-home"></i>
+                  <p>{char[0]}</p>
+                </div>
+              </Link>
+              {/* <div className="header__left--icon">
+                <i class="fas fa-bars-staggered" onClick={props.toggle}></i>
+              </div> */}
+            </div>
             <div className="header__right">
               <div className="search-row">
                 {/* <Link to="#" className="search-button">
@@ -208,7 +204,7 @@ const HeaderIndex = (props) => {
                 )}
               </div>
               <div className="links">
-                <Button variant="outline-primary" onClick={props.handleDrawerOpen}>
+                <Button variant="outline-primary" onClick={props.toggle}>
                   <i className="fas fa-bars"></i>
                 </Button>
                 <Button

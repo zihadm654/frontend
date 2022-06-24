@@ -5,7 +5,12 @@
   left: 0;
 }
 .main__content {
-  margin-left: 50px;
+  margin-left: 20px;
+}
+@media screen and (min-width: 768px) {
+  .main__content {
+    margin-left: 50px;
+  }
 }
 .sidebar {
   background: rgb(248, 249, 250);

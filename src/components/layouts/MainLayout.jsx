@@ -17,6 +17,8 @@ const MainLayout = (props) => {
   const toggleClass = () => {
     setThemeState(!themeState);
   };
+  const [isOpen, setIsOpen] = useState(true);
+  const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
     props.dispatch(fetchUserDetailsStart());
@@ -43,26 +45,25 @@ const MainLayout = (props) => {
         <Row>
           {!isContentCreator ? (
             null) : (
-            <Col xl={2} sm={2} md={2}>
+            <Col xl={2} sm={1} md={2}>
               {!isContentCreator ? (
                 null
               ) : (
-                <SideNav />
+                <SideNav isOpen={isOpen} setIsOpen={setIsOpen} isContentCreator={isContentCreator} />
               )}
             </Col>
           )
           }
           <Col
-            sm={isContentCreator ? (9) : (12)}
+            sm={isContentCreator ? (10) : (12)}
             md={isContentCreator ? (9) : (12)}
             xl={isContentCreator ? (9) : (12)}
             className="main__content">
-            <HeaderIndex toggleTheme={toggleClass} />
+            <HeaderIndex toggleTheme={toggleClass} toggle={toggle} isContentCreator={isContentCreator} />
             <div style={{ marginTop: '1.5rem', overflow: 'hidden' }} className="main-content-wrap sidenav-open d-flex flex-column">
               <div className="main-wrap-sec">
                 {React.cloneElement(props.children)}
               </div>
-              {/* <LatestFooter /> */}
             </div>
             <LatestFooter />
           </Col>

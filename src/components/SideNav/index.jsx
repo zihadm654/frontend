@@ -1,19 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./style.css";
 
 
 import { NavLink } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 
+function getWindowSize() {
+   const { innerWidth } = window;
+   return { innerWidth };
+}
 
-const SideNav = () => {
-   const [isOpen, setIsOpen] = useState(true);
-   const toggle = () => setIsOpen(!isOpen);
+const SideNav = ({ isOpen, setIsOpen, isContentCreator }) => {
+   const [windowSize, setWindowSize] = useState(getWindowSize())
+   useEffect(() => {
+      function handleWindowResize() {
+         setWindowSize(getWindowSize())
+      }
+      window.addEventListener('resize', handleWindowResize)
+      return () => {
+         window.removeEventListener('resize', handleWindowResize)
+      }
+   }, [])
+   useEffect(() => {
+      if (windowSize.innerWidth < 768) {
+         setIsOpen(false)
+      } else {
+         setIsOpen(true)
+      }
+   }, [setIsOpen, windowSize])
    const menuItem = [
       {
-         path: "/explore",
-         name: "Explore",
-         icon: <i class="fa-regular fa-compass"></i>
+         path: "/home",
+         name: "Home",
+         icon: <i class="fa-regular fa-home"></i>
+      },
+      {
+         path: "/dashboard",
+         name: "Dashboard",
+         icon: <i class="fa-regular fa-home"></i>
       },
       {
          path: "/profile",
@@ -67,9 +91,8 @@ const SideNav = () => {
                   style={{ height: '30px', width: "100%" }}
                   src={!isOpen ? "/assets/images/logo/App logo-01.png" : "/assets/images/logo/Logo PNG.png"}
                />
-               <div style={{ marginLeft: isOpen ? "30px" : "0px", cursor: 'pointer' }} className="bars">
-                  <i class="fas fa-bars-staggered" onClick={toggle}> </i>
-               </div>
+               {/* <div style={{ marginLeft: isOpen ? "30px" : "0px", cursor: 'pointer' }} className="bars">
+               </div> */}
             </div>
             <hr />
             {
@@ -81,7 +104,6 @@ const SideNav = () => {
                ))
             }
          </div>
-
       </div>
    );
 };

@@ -38,6 +38,11 @@
   margin: 0;
   margin-left: 0.5rem;
 }
+.main-header-menu .header__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .header__right {
   display: flex;
   align-items: center;
